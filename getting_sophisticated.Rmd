@@ -138,7 +138,7 @@ You can execute R code each time you build your website. Even if you don't yet k
 
 ### in line
 
-Here is an example inline. The date when I last built the website is `r Sys.Date()`. My favorite number is `r pi + 10`. There are `r length(list.files())` files and folders in our repo. This is not just text; his is executable R code that is `r 10 * 10`% awesome!
+Here is an example inline. The date when I last built the website is `r Sys.Date()`. My favorite number is `r pi + 10`. There are `r length(list.files())` files and folders in our repo. This is not just text; this is executable R code that is `r 10 * 10`% awesome!
 
 <br>
 
