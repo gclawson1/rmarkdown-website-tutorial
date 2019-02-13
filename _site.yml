@@ -11,7 +11,7 @@ navbar:
     - text: "Your Turn"
       href: your_turn.html
     - text: "New Website Page"
-    - href: New_Website_Page.html
+      href: New_Website_Page.html
 output_dir: "."
 output:
   html_document:
