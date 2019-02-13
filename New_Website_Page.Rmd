@@ -45,8 +45,8 @@ Adding three new columns
 <br>
 
 
-### Inserted Rmarkdown File Sample Visualization
+## Inserted Rmarkdown File Sample Visualization
 
-```{r child, child='new_page_examplermd/rockets_439.html'}
+```{r child, child='new_page_examplermd/rockets_439.rmd'}
 ```
  
