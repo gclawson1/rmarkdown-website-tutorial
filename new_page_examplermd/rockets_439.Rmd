@@ -1,0 +1,67 @@
+---
+title: "Sample Data Visualization 439"
+author: "Gage Clawson"
+date: "2/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message = FALSE, results='hide', include = FALSE}
+library(tidyverse)
+library(RColorBrewer)
+library(gganimate)
+library(ggimage)
+```
+
+
+
+```{r, message = FALSE, results='hide' , include = FALSE}
+agencies <- read_csv("agencies.csv")
+launches <- read_csv("launches.csv")
+
+```
+
+```{r, include = FALSE}
+us_ru_launches <- launches %>%
+  filter(state_code %in% c("US", "RU", "SU"), category == "O") %>%
+  mutate(state_code = case_when(
+    state_code == "US" ~ "US", 
+    state_code %in% c("RU", "SU") ~ "RU/USSR"
+  )) %>%
+  group_by(state_code, launch_year) %>%
+  summarise(number_launches = length(tag))
+
+```
+
+
+```{r rocket_image, include = FALSE}
+rocket <- "rocket.png"
+```
+
+```{r gganimate_rocket, message = FALSE, warning= FALSE, include = FALSE}
+launch_line <- ggplot(us_ru_launches, aes(x = launch_year, y = number_launches, color = state_code)) + 
+  geom_line() +
+  theme_bw() +
+  labs(x = "Year", y = "Number of Successful Launches") +
+  scale_x_continuous(expand = c(0,0), limits = c(1956, 2028.5), breaks = seq(1957, 2018, by  = 5)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0,105), breaks = seq(0, 105, by = 10)) +
+  theme(legend.title = element_blank(), legend.position = "none") +
+  scale_color_manual(values = c("red", "deepskyblue2")) + 
+  geom_image(aes( image = rocket)) +
+  geom_text(aes(x = 2020 , label = state_code), hjust = 0) +
+  geom_segment(aes(xend = 2020, yend = number_launches), linetype = 2, colour = 'grey') +
+  transition_reveal(state_code, as.numeric(launch_year)) 
+
+```
+
+<div align = "center">
+```{r, echo = FALSE}
+animate(launch_line, nframes = 170)
+```
+
+<div align = "left">
+**Figure 1. Successful Launches by Year for Russia/USSR and the United States.** This animation shows number of launches in Russia/USSR and the United States starting in 1957. RU/USSR is short for Russia/USSR, and US is short for United States.  
+
