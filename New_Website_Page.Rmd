@@ -1,0 +1,45 @@
+---
+title: "New Website Page"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+
+##Add three columns
+Adding three new columns
+
+### columns
+
+<style>
+  .col3 {
+    columns: 3 125px;         /* number of columns and width in pixels*/
+    -webkit-columns: 3 125px; /* chrome, safari */
+    -moz-columns: 3 125px;    /* firefox */
+  }
+</style>
+ 
+
+<div class="col3">
+**Column 1**
+
+- This is column 1
+<br>
+<br>
+
+**Column 2**
+
+- This is column 2
+<br>
+<br>
+
+**Column 3**
+
+- This is column 3
+<br>
+<br>
+
+</div>
+
+<br>

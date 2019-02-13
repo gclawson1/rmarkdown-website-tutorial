@@ -10,10 +10,12 @@ navbar:
       href: getting_sophisticated.html
     - text: "Your Turn"
       href: your_turn.html
+    - text: "New Website Page"
+    - href: New_Website_Page.html
 output_dir: "."
 output:
   html_document:
     theme: cosmo
     highlight: textmate
-#    include:
-#      after_body: _footer.html
+   include:
+      after_body: _footer.html
